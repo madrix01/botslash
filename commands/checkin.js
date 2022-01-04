@@ -29,5 +29,8 @@ module.exports = {
         }
       });
     }
+    await interaction.reply(
+      `You've have been checked in ${role_name}! welcome to DotSlash5.0`
+    );
   },
 };
