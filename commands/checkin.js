@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, channelMention } = require("@discordjs/builders");
+const { Permissions } = require("discord.js");
 
 const data = new SlashCommandBuilder()
   .setName("checkin")
@@ -30,6 +31,7 @@ module.exports = {
     let has_team = false;
     let role_name = `Team-${team_name}`;
     let role_id = "";
+    let devfolio_id = await interaction.options.getString("devfolio_id");
     await interaction.member.roles.cache.find((role) => {
       if (role.name.startsWith("Team-")) {
         role_id = role.id;
@@ -45,7 +47,9 @@ module.exports = {
         }
       });
       if (team_found === false) {
-        await interaction.guild.roles.create({ name: role_name });
+        await interaction.guild.roles.create({
+          name: role_name,
+        });
         await interaction.guild.roles.cache.find((role) => {
           if (role_name === role.name) {
             role_id = role.id;
@@ -54,7 +58,7 @@ module.exports = {
         });
       }
       await interaction.reply(
-        `You've have been checked in <@&${role_id}>! welcome to DotSlash5.0`
+        `You've have been checked in <@&${role_id}> ! welcome to DotSlash5.0. Devfolio ID: ${devfolio_id}`
       );
     } else {
       await interaction.reply(`You're already in a team <@&${role_id}>`);
