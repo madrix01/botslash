@@ -58,7 +58,7 @@ module.exports = {
         });
       }
       await interaction.reply(
-        `You've have been checked in <@&${role_id}> ! welcome to DotSlash5.0. Devfolio ID: ${devfolio_id}`
+        `You've been checked in <@&${role_id}>! Devfolio ID: ${devfolio_id}. Welcome to DotSlash5.0! `
       );
     } else {
       await interaction.reply(`You're already in a team <@&${role_id}>`);
